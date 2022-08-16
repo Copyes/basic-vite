@@ -1,0 +1,28 @@
+{
+  "name": "basic-vite",
+  "version": "0.0.1",
+  "description": "basic vite",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vite": "node ./vite/node/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Copyes/basic-vite.git"
+  },
+  "author": "xunzhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Copyes/basic-vite/issues"
+  },
+  "homepage": "https://github.com/Copyes/basic-vite#readme",
+  "dependencies": {
+    "esbuild": "^0.15.3",
+    "koa": "^2.13.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ws": "^8.8.1"
+  }
+}
