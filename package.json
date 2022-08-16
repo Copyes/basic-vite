@@ -1,5 +1,5 @@
 {
-  "name": "basic-vite",
+  "name": "vite",
   "version": "0.0.1",
   "description": "basic vite",
   "main": "index.js",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Copyes/basic-vite#readme",
   "dependencies": {
+    "chokidar": "^3.5.3",
     "esbuild": "^0.15.3",
     "koa": "^2.13.4",
     "react": "^18.2.0",
