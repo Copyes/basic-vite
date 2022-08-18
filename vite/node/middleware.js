@@ -1,5 +1,11 @@
 import fs from 'fs';
-import { resolveOnRoot, __dirname, handleCSS } from './utils.js';
+import {
+  resolveOnRoot,
+  __dirname,
+  handleCSS,
+  handleJSX,
+  hadnleModules,
+} from './utils.js';
 
 export const baseMiddleware = (ctx, next) => {
   const requestUrl = ctx.request.url.split('?')[0];
@@ -37,6 +43,12 @@ export const transformMiddleware = (ctx, next) => {
     ctx.type = 'application/javascript';
     const filePath = requestUrl.replace('/@vite/client', 'vite/client');
     ctx.body = fs.readFileSync(resolveOnRoot(filePath), 'utf8');
+  } else if (requestUrl.startsWith('/@modules/')) {
+    hadnleModules(ctx, requestUrl);
+  } else if (requestUrl.endsWith('.css')) {
+    handleCSS(ctx, requestUrl);
+  } else if (requestUrl.endsWith('.jsx')) {
+    handleJSX(ctx, requestUrl);
   }
   next();
 };
