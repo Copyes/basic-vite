@@ -4,6 +4,7 @@ import {
   __dirname,
   handleCSS,
   handleJSX,
+  handleSvg,
   hadnleModules,
 } from './utils.js';
 
@@ -36,9 +37,6 @@ export const indexHtmlMiddleware = (ctx, next) => {
 
 export const transformMiddleware = (ctx, next) => {
   const { requestUrl } = ctx;
-  // if (requestUrl.startsWith('/@modules/')) {
-  //   handleNodeModules(ctx, requestUrl);
-  // }
   if (requestUrl.startsWith('/@vite/client')) {
     ctx.type = 'application/javascript';
     const filePath = requestUrl.replace('/@vite/client', 'vite/client');
@@ -47,6 +45,8 @@ export const transformMiddleware = (ctx, next) => {
     hadnleModules(ctx, requestUrl);
   } else if (requestUrl.endsWith('.css')) {
     handleCSS(ctx, requestUrl);
+  } else if (requestUrl.endsWith('.svg')) {
+    handleSvg(ctx, requestUrl);
   } else if (requestUrl.endsWith('.jsx')) {
     handleJSX(ctx, requestUrl);
   }

@@ -5,18 +5,18 @@ import { resolveOnRoot, __dirname } from './utils.js';
 
 export const hmr = (ws, config) => {
   chokidar.watch(resolveOnRoot('src')).on('change', (changePath) => {
-    let file = changePath.replace(__dirname, '');
-    console.log(`${file} has changed`);
+    let filePath = changePath.replace(__dirname, '');
+    console.log(`${filePath} has changed`);
     const cssObj = {};
 
-    if (changePath.endsWith('.css')) {
-      cssObj.css = fs.readFileSync(resolveOnRoot(changePath)).toString();
+    if (filePath.endsWith('.css')) {
+      cssObj.css = fs.readFileSync(resolveOnRoot(filePath)).toString();
     }
 
     ws.send(
       JSON.stringify({
         type: 'change',
-        changePath,
+        filePath,
         ...cssObj,
       })
     );
